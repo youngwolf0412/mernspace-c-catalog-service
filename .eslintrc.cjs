@@ -1,5 +1,6 @@
 /* eslint-env node */
 module.exports = {
+    ignorePatterns: [".eslintrc.cjs"],
     extends: [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended-type-checked",
@@ -16,5 +17,7 @@ module.exports = {
         "no-console": "error",
         "dot-notation": "error",
         "@typescript-eslint/require-await": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/unbound-method": "off",
     },
 };
