@@ -9,7 +9,7 @@ import { ProductService } from "./product-service";
 import fileUpload from "express-fileupload";
 import { S3Storage } from "../common/services/S3Storage";
 import createHttpError from "http-errors";
-// import updateProductValidator from "./update-product-validator";
+import updateProductValidator from "./update-product-validator";
 // import { createMessageProducerBroker } from "../common/factories/brokerFactory";
 
 const router = express.Router();
@@ -41,21 +41,22 @@ router.post(
     productController.create,
 );
 
-// router.put(
-//     "/:productId",
-//     authenticate,
-//     canAccess([Roles.ADMIN, Roles.MANAGER]),
-//     fileUpload({
-//         limits: { fileSize: 500 * 1024 }, // 500kb
-//         abortOnLimit: true,
-//         limitHandler: (req, res, next) => {
-//             const error = createHttpError(400, "File size exceeds the limit");
-//             next(error);
-//         },
-//     }),
-//     updateProductValidator,
-//     asyncWrapper(productController.update),
-// );
+router.put(
+    "/:productId",
+    authenticate,
+    canAccess([ROLES.ADMIN, ROLES.MANAGER]),
+
+    fileUpload({
+        limits: { fileSize: 500 * 1024 }, // 500kb
+        abortOnLimit: true,
+        limitHandler: (req, res, next) => {
+            const error = createHttpError(400, "File size exceeds the limit");
+            next(error);
+        },
+    }),
+    updateProductValidator,
+    productController.update,
+);
 
 // router.get("/", asyncWrapper(productController.index));
 
