@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import mongoose, { Schema } from "mongoose";
-import { Attribute, Category, PriceConfiguration } from "./category-types";
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-const priceConfigurationSchema = new mongoose.Schema<PriceConfiguration>(
+const priceConfigurationSchema = new mongoose.Schema(
     {
         priceType: {
             type: String,
@@ -18,8 +15,7 @@ const priceConfigurationSchema = new mongoose.Schema<PriceConfiguration>(
     { _id: false },
 );
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-const attributeSchema = new mongoose.Schema<Attribute>(
+const attributeSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -31,7 +27,6 @@ const attributeSchema = new mongoose.Schema<Attribute>(
             required: true,
         },
         defaultValue: {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             type: Schema.Types.Mixed,
             required: true,
         },
@@ -43,8 +38,7 @@ const attributeSchema = new mongoose.Schema<Attribute>(
     { _id: false },
 );
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-const categorySchema = new Schema<Category>({
+const categorySchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -60,5 +54,4 @@ const categorySchema = new Schema<Category>({
     },
 });
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 export default mongoose.model("Category", categorySchema);

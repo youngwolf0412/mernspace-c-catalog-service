@@ -1,7 +1,7 @@
 import express from "express";
 import { CategoryController } from "./category-controller";
 import categoryValidator from "./category-validator";
-// import categoryUpdateValidator from "./category-update-validator";
+import categoryUpdateValidator from "./category-update-validator";
 import { CategoryService } from "./category-service";
 import logger from "../config/logger";
 
@@ -23,15 +23,15 @@ router.post(
     categoryController.create,
 );
 
-// router.patch(
-//     "/:id",
-//     authenticate,
-//     canAccess([Roles.ADMIN]),
-//     categoryUpdateValidator,
-//     asyncWrapper(categoryController.update),
-// );
+router.patch(
+    "/:id",
+    authenticate,
+    canAccess([ROLES.ADMIN]),
+    categoryUpdateValidator,
+    categoryController.update,
+);
 
-// router.get("/", asyncWrapper(categoryController.index));
-// router.get("/:categoryId", asyncWrapper(categoryController.getOne));
+router.get("/", categoryController.index);
+router.get("/:categoryId", categoryController.getOne);
 
 export default router;
