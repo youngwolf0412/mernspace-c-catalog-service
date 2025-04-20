@@ -54,8 +54,10 @@ export class CategoryController {
             // Convert existing Map to object if it's a Map
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const existingConfig =
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 existingCategory.priceConfiguration instanceof Map
-                    ? Object.fromEntries(existingCategory.priceConfiguration)
+                    ? // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                      Object.fromEntries(existingCategory.priceConfiguration)
                     : existingCategory.priceConfiguration;
 
             // Merge configurations

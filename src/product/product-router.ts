@@ -58,6 +58,6 @@ router.put(
     productController.update,
 );
 
-// router.get("/", asyncWrapper(productController.index));
+router.get("/", productController.index);
 
 export default router;

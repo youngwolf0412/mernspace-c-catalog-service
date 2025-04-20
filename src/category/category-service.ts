@@ -4,7 +4,8 @@ import { Category } from "./category-types";
 export class CategoryService {
     async create(category: Category) {
         const newCategory = new CategoryModel(category);
-        return await newCategory.save();
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        return (await newCategory.save()) as Category;
     }
 
     async getAll() {

@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export interface PriceConfiguration {
     [key: string]: {
         priceType: "base" | "aditional";
@@ -13,6 +15,7 @@ export interface Attribute {
 }
 
 export interface Category {
+    _id?: mongoose.Types.ObjectId;
     name: string;
     priceConfiguration: PriceConfiguration;
     attributes: Attribute[];

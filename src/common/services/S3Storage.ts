@@ -55,7 +55,7 @@ export class S3Storage implements FileStorage {
         return await this.client.send(new DeleteObjectCommand(objectParams));
     }
     getObjectUri(filename: string): string {
-        // https://mernspace-project.s3.ap-south-1.amazonaws.com/5962624d-1b9e-4c96-b1d6-395ca9ef4933
+        // https://catalog-service-project.s3.us-east-1.amazonaws.com/447fedde-9b5f-403c-bba5-df93d8514cb1
         const bucket = config.get("s3.bucket");
         const region = config.get("s3.region");
 
